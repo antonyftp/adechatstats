@@ -18,7 +18,8 @@ const display = (messageCountArray, leaderboardLength) => {
 }
 
 export const leaderboard = (dataPath, leaderboardLength) => {
-    const dataFiles = readdirSync(dataPath);
+    let dataFiles = readdirSync(dataPath);
+    dataFiles = dataFiles.filter(dataFile => dataFile.endsWith('.json'));
     let messages = [];
     let messagesDecode = [];
     let messageCountArray = [];
