@@ -36,7 +36,7 @@ const display = (memberName) => {
 }
 
 export const member = (dataPath, memberName) => {
-    const dataFiles = readdirSync(dataPath);
+    let dataFiles = readdirSync(dataPath);
     dataFiles = dataFiles.filter(dataFile => dataFile.endsWith('.json'));
     let messages = [];
     dataFiles.forEach(dataFile => {
