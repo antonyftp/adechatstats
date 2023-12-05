@@ -2,7 +2,6 @@ import { readdirSync } from 'fs';
 import { dataParse, decodeMessages } from '../lib/utils.js';
 
 let top3Members = [];
-let mostActiveMember = "";
 let mostReactedMessage = {
     "content": "",
     "reactions": []
@@ -15,12 +14,6 @@ const checkTop3Members = (messageCountPerMember) => {
     messageCountPerMemberArray.sort((a, b) => b[1] - a[1]);
     for (let i = 0; i < 3 && i < messageCountPerMemberArray.length; i++)
         top3Members.push(messageCountPerMemberArray[i]);
-}
-
-const checkMostActiveMember = (messageCountPerMember) => {
-    const messageCountPerMemberArray = Object.entries(messageCountPerMember);
-    messageCountPerMemberArray.sort((a, b) => b[1] - a[1]);
-    mostActiveMember = messageCountPerMemberArray[0][0];
 }
 
 const countMessagesPerMember = (message) => {
