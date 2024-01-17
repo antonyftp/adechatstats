@@ -20,6 +20,7 @@ const countMessagesPerMember = (message) => {
     const senderName = message.sender_name;
     messageCountPerMember[senderName] = (messageCountPerMember[senderName] || 0) + 1;
 }
+
 const checkMostReactedMessage = (message) => {
     if (message.reactions) {
         if (message.reactions.length > mostReactedMessage.reactions.length)
@@ -53,7 +54,6 @@ const display = () => {
     console.log(`Most reacted message (from ${mostReactedMessage.sender_name} with ${mostReactedMessage.reactions.length} reactions): \n\n${mostReactedMessage.content}`);
     console.log('\n')
     console.log(`Message count : ${messageCount}`)
-    
 }
 
 export const stats = (dataPath, argv) => {
