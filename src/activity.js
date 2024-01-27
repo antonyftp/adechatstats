@@ -1,6 +1,5 @@
 import { readdirSync } from 'fs';
 import { dataParse, decodeMessages } from '../lib/utils.js';
-import { member } from './member.js';
 
 let messageCountPerMember = [];
 
