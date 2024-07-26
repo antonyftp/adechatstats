@@ -6,7 +6,8 @@ const messageCountPerMember = [];
 
 const getInactiveMembers = (memberList, messageCountPerMember) => {
     memberList.forEach(member => {
-        if (!messageCountPerMember[member.name])
+        // Change 0 by the number of messages you want to set as the minimum to be considered active
+        if (messageCountPerMember[member.name] < 0 || !messageCountPerMember[member.name]) 
             inactiveMembers.push(member.name);
     });
 }
