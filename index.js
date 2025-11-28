@@ -36,6 +36,6 @@ switch (process.argv[2]) {
         console.log("-m <memberName> : Stats about a <memberName>");
         console.log("-s <startingDate> <endDate> : Stats about the groupchat bewteen <startingDate> and <endDate> (timestamp in ms) (optional)")
         console.log("-a <startingDate> <endDate> : Activity of the groupchat members bewteen <startingDate> and <endDate>")
-        console.log("-i <startingDate> <endDate> : Inactivity of the groupchat members bewteen <startingDate> and <endDate>")
+        console.log("-i <startingDate> <endDate> [minMessages] : Inactivity of the groupchat members between <startingDate> and <endDate> with optional minimum messages threshold")
         break;
 }
