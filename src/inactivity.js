@@ -7,9 +7,13 @@ const getMessagesCountPerMember = (messagesDecode, counts, lastMessages, startTs
         const inWindow = (startTs == null || ts >= startTs) && (endTs == null || ts <= endTs);
         if (inWindow) {
             const name = message.sender_name;
-            counts[name] = (counts[name] || 0) + 1;
-            if (!lastMessages[name] || ts > lastMessages[name].timestamp_ms) {
-                lastMessages[name] = message;
+            // Skip reactions - they have content like "username reacted emoji to your message"
+            const isReaction = message.content && /reacted .+ to your message\s*$/.test(message.content);
+            if (!isReaction) {
+                counts[name] = (counts[name] || 0) + 1;
+                if (!lastMessages[name] || ts > lastMessages[name].timestamp_ms) {
+                    lastMessages[name] = message;
+                }
             }
         }
     });
@@ -75,7 +79,8 @@ export const inactivity = (dataPath, argv) => {
         messagesDecode.forEach(m => {
             const ts = m.timestamp_ms;
             const inWindow = (start == null || ts >= start) && (end == null || ts <= end);
-            if (inWindow) totalCounted++;
+            const isReaction = m.content && /reacted .+ to your message\s*$/.test(m.content);
+            if (inWindow && !isReaction) totalCounted++;
         });
     });
 
